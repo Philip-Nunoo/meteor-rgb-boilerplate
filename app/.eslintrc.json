@@ -1,0 +1,31 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["plugin:meteor/recommended", "airbnb"],
+  "installedESLint": true,
+  "plugins": [
+    "meteor",
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": 0,
+    "import/no-absolute-path": 0,
+    "no-underscore-dangle": 0,
+    "no-return-assign": 0,
+    "no-param-reassign": 0,
+    "react/jsx-filename-extension": 0,
+    "react/no-unused-prop-types": [2, {
+      "skipShapeProps": true
+    }],
+    "react/sort-comp": 0,
+    "react/no-unused-prop-types": 0
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  }
+}
