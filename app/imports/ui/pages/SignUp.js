@@ -58,8 +58,7 @@ type FormData = {
 const styles = {
   container: {
     paddingTop: 50,
-    backgroundColor: 'rgb(245, 245, 245)',
-    height: '100%',
+    minHeight: '100%',
   },
 };
 
@@ -120,11 +119,6 @@ class SignUp extends React.Component {
         <Grid>
           <Row>
             <Col md={5} className="center-block" style={{ float: 'none' }}>
-              <div className="text-center">
-                <img src="/img/logo.svg" alt="Cenabo" />
-              </div>
-              <h5 className="text-center text-muted">Good decision. Let&apos;s get started.</h5>
-
               <Panel style={{ marginTop: 10 }}>
 
                 <AutoForm schema={schema} onSubmit={this.onSubmit}>

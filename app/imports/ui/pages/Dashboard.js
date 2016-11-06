@@ -3,24 +3,26 @@
 import React, { PropTypes } from 'react';
 import {
   Navbar,
-  Grid,
   Nav,
   NavItem,
+  Grid,
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const LandingPage = ({ children }) =>
+const Dashboard = ({ children }) =>
   <div>
-    <Navbar>
+    <Navbar fluid style={{ padding: '0px 20px' }}>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="/">App</a>
+          <a href="/" style={{ padding: '15px' }}>
+            App Name
+          </a>
         </Navbar.Brand>
       </Navbar.Header>
       <Nav pullRight>
-        <LinkContainer to="/sign-up" onlyActiveOnIndex>
+        <LinkContainer to="/dashboard" onlyActiveOnIndex>
           <NavItem eventKey={1}>
-            Signup
+            Logout
           </NavItem>
         </LinkContainer>
       </Nav>
@@ -30,8 +32,8 @@ const LandingPage = ({ children }) =>
     </Grid>
   </div>;
 
-LandingPage.propTypes = {
+Dashboard.propTypes = {
   children: PropTypes.node,
 };
 
-export default LandingPage;
+export default Dashboard;
