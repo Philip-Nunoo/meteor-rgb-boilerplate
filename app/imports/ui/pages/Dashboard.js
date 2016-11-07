@@ -1,39 +1,58 @@
 /* flow */
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["logout"] }] */
 
+import { Meteor } from 'meteor/meteor';
 import React, { PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import {
   Navbar,
   Nav,
-  NavItem,
-  Grid,
+  NavDropdown,
+  MenuItem,
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const Dashboard = ({ children }) =>
-  <div>
-    <Navbar fluid style={{ padding: '0px 20px' }}>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <a href="/" style={{ padding: '15px' }}>
-            App Name
-          </a>
-        </Navbar.Brand>
-      </Navbar.Header>
-      <Nav pullRight>
-        <LinkContainer to="/dashboard" onlyActiveOnIndex>
-          <NavItem eventKey={1}>
-            Logout
-          </NavItem>
-        </LinkContainer>
-      </Nav>
-    </Navbar>
-    <Grid>
-      {children}
-    </Grid>
-  </div>;
+export default class Dashboard extends React.Component {
+  static propTypes = {
+    children: PropTypes.node,
+  };
 
-Dashboard.propTypes = {
-  children: PropTypes.node,
-};
+  logout() {
+    Meteor.logout(() =>
+      browserHistory.push('/sign-in')
+    );
+  }
 
-export default Dashboard;
+  constructor() {
+    super();
+
+    this.state = { user: 'User' };
+    this.logout = this.logout.bind(this);
+  }
+
+  render() {
+    const { user } = this.state;
+
+    return (
+      <div>
+        <Navbar fluid style={{ padding: '10px 25px' }}>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/" style={{ padding: '15px' }}>
+                App Name
+              </a>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav pullRight>
+            <NavDropdown eventKey={1} title={user} id="basic-nav-dropdown">
+              <LinkContainer onClick={this.logout} to="/sign-in">
+                <MenuItem eventKey={1.1}>Logout</MenuItem>
+              </LinkContainer>
+            </NavDropdown>
+          </Nav>
+        </Navbar>
+        {this.props.children}
+      </div>
+    );
+  }
+}
