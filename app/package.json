@@ -5,7 +5,8 @@
     "start": "meteor run -p 4000 --settings private/settings/dev.json",
     "lint": "./node_modules/eslint/bin/eslint.js --ignore-pattern /\\.meteor/*/ --ignore-pattern /public/** --ignore-pattern /packages/** .",
     "flow": "./node_modules/flow-bin/cli.js check",
-    "validate": "meteor npm ls"
+    "validate": "meteor npm ls",
+    "test": "jest --watch"
   },
   "dependencies": {
     "apollo-client": "^0.5.0",
@@ -30,7 +31,11 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
+    "babel-jest": "^17.0.2",
     "babel-plugin-transform-class-properties": "^6.18.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.16.0",
@@ -38,7 +43,9 @@
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^6.5.0",
     "flow-bin": "^0.34.0",
-    "precommit-hook": "^3.0.0"
+    "jest": "^17.0.3",
+    "precommit-hook": "^3.0.0",
+    "react-test-renderer": "^15.4.1"
   },
   "pre-commit": [
     "lint",
