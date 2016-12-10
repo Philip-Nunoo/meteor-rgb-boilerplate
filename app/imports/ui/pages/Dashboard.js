@@ -35,10 +35,10 @@ export default class Dashboard extends React.Component {
 
     return (
       <div>
-        <Navbar fluid style={{ padding: '10px 25px' }}>
+        <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/" style={{ padding: '15px' }}>
+              <a href="/">
                 App Name
               </a>
             </Navbar.Brand>
