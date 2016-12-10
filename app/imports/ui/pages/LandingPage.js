@@ -20,7 +20,12 @@ const LandingPage = ({ children }) =>
       <Nav pullRight>
         <LinkContainer to="/sign-up" onlyActiveOnIndex>
           <NavItem eventKey={1}>
-            Signup
+            Sign Up
+          </NavItem>
+        </LinkContainer>
+        <LinkContainer to="/sign-in" onlyActiveOnIndex>
+          <NavItem eventKey={1}>
+            Login
           </NavItem>
         </LinkContainer>
       </Nav>
