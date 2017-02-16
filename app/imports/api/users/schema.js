@@ -1,5 +1,8 @@
+/* @flow */
+
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { BaseSchema } from '/imports/shared/schemas.js';
+import Profile from './schemas/profile';
 import Billing from './schemas/billing';
 
 export default new SimpleSchema([
@@ -25,18 +28,19 @@ export default new SimpleSchema([
       blackbox: true,
     },
 
-    firstname: {
-      type: String,
-      optional: true,
-    },
-
-    lastname: {
-      type: String,
+    profile: {
+      type: Profile,
       optional: true,
     },
 
     billing: {
       type: Billing,
+      optional: true,
+    },
+
+    roles: {
+      type: [String],
+      blackbox: true,
       optional: true,
     },
   },
