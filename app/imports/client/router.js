@@ -1,6 +1,7 @@
 /* flow */
 
 import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
 import React from 'react';
 import {
   Router,
@@ -10,21 +11,39 @@ import {
 } from 'react-router';
 
 import App from '/imports/ui/pages/App';
-import LandingPage from '/imports/ui/pages/LandingPage';
-import LandingPageIndex from '/imports/ui/pages/LandingPageIndex';
-import AuthPage from '/imports/ui/pages/AuthPage';
-import SignUp from '/imports/ui/pages/SignUp';
-import SignIn from '/imports/ui/pages/SignIn';
-import Dashboard from '/imports/ui/pages/Dashboard';
-import DashboardIndex from '/imports/ui/pages/DashboardIndex';
+import AppDashboard from '/imports/ui/pages/AppDashboard';
+
+import {
+  LandingPage,
+  LandingPageIndex,
+} from '/imports/ui/pages/public';
+
+import {
+  AuthPage,
+  SignUp,
+  SignIn,
+} from '/imports/ui/pages/auth';
+
+import {
+  UserDashboard,
+  UserDashboardIndex,
+} from '/imports/ui/pages/user';
+
+import {
+  AdminDashboard,
+  AdminDashboardIndex,
+} from '/imports/ui/pages/admin';
 
 const requireAuth = (nextState, replaceState) => {
-  if (!Meteor.userId()) {
-    replaceState({
-      pathname: '/sign-in',
-      state: { nextPathname: nextState.location.pathname },
-    });
-  }
+  Tracker.autorun(() => {
+    if (!Meteor.userId()) {
+      replaceState({
+        pathname: '/sign-in',
+        state: { nextPathname: nextState.location.pathname },
+      });
+      return;
+    }
+  });
 };
 
 export default () =>
@@ -37,8 +56,13 @@ export default () =>
         <Route path="/sign-up" component={SignUp} />
         <Route path="/sign-in" component={SignIn} />
       </Route>
-      <Route path="/dashboard" component={Dashboard} onEnter={requireAuth}>
-        <IndexRoute component={DashboardIndex} />
+      <Route component={AppDashboard} onEnter={requireAuth}>
+        <Route path="/dashboard" component={UserDashboard}>
+          <IndexRoute component={UserDashboardIndex} />
+        </Route>
+        <Route path="/admin" component={AdminDashboard}>
+          <IndexRoute component={AdminDashboardIndex} />
+        </Route>
       </Route>
     </Route>
   </Router>;

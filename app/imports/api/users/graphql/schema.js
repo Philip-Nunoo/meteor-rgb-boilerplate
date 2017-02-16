@@ -13,7 +13,7 @@ export default `
   }
 
   input EditUserDetailsInput {
-    firstname: String!
-    lastname: String!
+    firstName: String!
+    lastName: String!
   }
 `;

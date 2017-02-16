@@ -1,8 +1,6 @@
 /* @flow */
 
-import React, { PropTypes } from 'react';
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import React from 'react';
 import { Accounts } from 'meteor/accounts-base';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { AutoForm, QuickField } from 'meteor/mfactory:autoform-react';
@@ -17,11 +15,15 @@ import {
 import { Link, browserHistory } from 'react-router';
 
 const schema = new SimpleSchema({
-  firstname: {
+  firstName: {
     type: String,
   },
 
-  lastname: {
+  lastName: {
+    type: String,
+  },
+
+  username: {
     type: String,
   },
 
@@ -38,21 +40,20 @@ const schema = new SimpleSchema({
   },
 });
 
-const editUserDetailsMutation = gql`
-  mutation ($input: EditUserDetailsInput!) {
-    editUserDetails(input: $input) {
-      id
-    }
-  }
-`;
-
-const withMutations = graphql(editUserDetailsMutation);
-
 type FormData = {
   email: string,
   password: string,
-  firstname: string,
-  lastname: string,
+  username: string,
+  firstName: string,
+  lastName: string,
+};
+
+type Props = {
+  location: {
+    state: {
+      nextPathname: string,
+    },
+  },
 };
 
 const styles = {
@@ -63,22 +64,13 @@ const styles = {
 };
 
 class SignUp extends React.Component {
-  static propTypes = {
-    mutate: PropTypes.func.isRequired,
-    location: PropTypes.shape({
-      state: PropTypes.shape({
-        nextPathname: PropTypes.string,
-      }),
-    }),
-  };
-
   state: {
     emailAlreadyExists: boolean,
   };
 
   onSubmit: (data: FormData) => null;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -88,23 +80,17 @@ class SignUp extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit({ email, password, ...details }: FormData) {
-    Accounts.createUser({ email, password }, (err) => {
+  onSubmit({ email, password, username, ...details }: FormData) {
+    const profile = { firstName: details.firstName, lastName: details.lastName };
+    Accounts.createUser({ email, username, password, profile }, (err) => {
       if (!err) {
-        this.props.mutate({
-          variables: {
-            input: details,
-          },
-        })
-        .then(() => {
-          const { state } = this.props.location;
+        const { state } = this.props.location;
 
-          if (state && state.nextPathname) {
-            browserHistory.push(state.nextPathname);
-          } else {
-            browserHistory.push('/dashboard');
-          }
-        });
+        if (state && state.nextPathname) {
+          browserHistory.push(state.nextPathname);
+        } else {
+          browserHistory.push('/dashboard');
+        }
       } else if (err.reason === 'Email already exists.') {
         this.setState({ emailAlreadyExists: true });
       }
@@ -122,8 +108,9 @@ class SignUp extends React.Component {
               <Panel style={{ marginTop: 10 }}>
 
                 <AutoForm schema={schema} onSubmit={this.onSubmit}>
-                  <QuickField name="firstname" />
-                  <QuickField name="lastname" />
+                  <QuickField name="firstName" />
+                  <QuickField name="lastName" />
+                  <QuickField name="username" />
                   <QuickField
                     name="email"
                     errorMessage={emailAlreadyExists ? 'Email already exists.' : undefined}
@@ -140,7 +127,7 @@ class SignUp extends React.Component {
                     bsStyle="success"
                     className="pull-right"
                   >
-                    Sign Up
+                    Sign Up Now
                   </Button>
 
                   <Clearfix />
@@ -157,4 +144,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default withMutations(SignUp);
+export default SignUp;
