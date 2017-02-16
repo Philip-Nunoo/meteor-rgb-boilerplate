@@ -9,6 +9,9 @@ import {
   Nav,
   NavDropdown,
   MenuItem,
+  Grid,
+  Row,
+  Col,
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -59,7 +62,27 @@ class Dashboard extends React.Component {
             </NavDropdown>
           </Nav>
         </Navbar>
-        {this.props.children}
+        <Grid fluid>
+          <Row>
+            <Col sm={3} md={2} className="sidebar">
+              <Nav className="nav-sidebar">
+                <LinkContainer
+                  to="/admin"
+                >
+                  <MenuItem eventKey={1.1}>Dashboard</MenuItem>
+                </LinkContainer>
+                <LinkContainer
+                  to="/admin/users"
+                >
+                  <MenuItem eventKey={1.2}>Users</MenuItem>
+                </LinkContainer>
+              </Nav>
+            </Col>
+            <Col sm={9} smOffset={3} md={10} mdOffset={2} className="main">
+              {this.props.children}
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
