@@ -6,6 +6,7 @@ export default [
 type Query {
   viewer: User
   user(id: String!): User
+  users: [User]
 }
 
 type MutationError {

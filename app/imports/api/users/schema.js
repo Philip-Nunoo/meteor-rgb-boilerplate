@@ -22,6 +22,10 @@ export default new SimpleSchema([
       optional: true,
     },
 
+    username: {
+      type: String,
+    },
+
     services: {
       type: Object,
       optional: true,

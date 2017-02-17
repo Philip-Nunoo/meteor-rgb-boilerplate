@@ -1,6 +1,7 @@
 /* @flow */
 
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 
 import Users from './users/collection';
 
@@ -17,9 +18,13 @@ export default {
     async user(root, args) {
       return await Users.findOne(args.id);
     },
+    async users(root, args, context = {}) {
+      return Roles.userIsInRole(context.userId, 'admin') ?
+      await Meteor.users.find().fetch() : [];
+    },
   },
   Mutation: {
-    async editUserDetails(root, args, context = {}) {
+    editUserDetails(root, args, context = {}) {
       if (!context.userId) {
         return { errors: [{ message: 'Must be logged in' }] };
       }

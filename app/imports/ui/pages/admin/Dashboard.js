@@ -66,14 +66,10 @@ class Dashboard extends React.Component {
           <Row>
             <Col sm={3} md={2} className="sidebar">
               <Nav className="nav-sidebar">
-                <LinkContainer
-                  to="/admin"
-                >
+                <LinkContainer to="/admin" onlyActiveOnIndex>
                   <MenuItem eventKey={1.1}>Dashboard</MenuItem>
                 </LinkContainer>
-                <LinkContainer
-                  to="/admin/users"
-                >
+                <LinkContainer to="/admin/users">
                   <MenuItem eventKey={1.2}>Users</MenuItem>
                 </LinkContainer>
               </Nav>

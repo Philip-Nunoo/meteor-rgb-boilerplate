@@ -10,6 +10,7 @@ export default `
 
   type User {
     ${userSchema.fields}
+    id: String
   }
 
   input EditUserDetailsInput {

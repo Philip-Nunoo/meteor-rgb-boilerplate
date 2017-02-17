@@ -32,6 +32,7 @@ import {
 import {
   AdminDashboard,
   AdminDashboardIndex,
+  AdminDashboardUsers,
 } from '/imports/ui/pages/admin';
 
 const requireAuth = (nextState, replaceState) => {
@@ -62,6 +63,7 @@ export default () =>
         </Route>
         <Route path="/admin" component={AdminDashboard}>
           <IndexRoute component={AdminDashboardIndex} />
+          <Route path="/admin/users" component={AdminDashboardUsers} />
         </Route>
       </Route>
     </Route>
