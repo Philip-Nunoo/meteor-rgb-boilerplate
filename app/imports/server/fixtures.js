@@ -21,6 +21,7 @@ users.forEach(({ email, username, password, profile, roles }) => {
   if (!userExists) {
     const userId = Accounts.createUser({ email, username, password, profile });
     Roles.addUsersToRoles(userId, roles);
+    // eslint-disable-next-line no-console
     console.log('Created Admin Successfully');
   }
 });

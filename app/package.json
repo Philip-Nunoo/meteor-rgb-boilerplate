@@ -13,9 +13,11 @@
     "apollo-server": "^0.3.3",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "graphql": "^0.7.2",
     "graphql-server-express": "^0.4.3",
+    "graphql-subscriptions": "^0.3.0",
     "graphql-tag": "^0.1.16",
     "graphql-tools": "^0.8.0",
     "graphql-typings": "^0.0.1-beta-2",
@@ -29,7 +31,8 @@
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
     "react-router-bootstrap": "^0.23.1",
-    "selectn": "^1.1.2"
+    "selectn": "^1.1.2",
+    "subscriptions-transport-ws": "^0.5.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
