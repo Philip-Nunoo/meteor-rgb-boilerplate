@@ -9,7 +9,10 @@ import {
 } from 'react-bootstrap';
 import moment from 'moment';
 
-const formatDate = (date, format = 'D MMM YYYY') => moment(date).format(format);
+import type { User } from '/imports/api/flow-types';
+
+const formatDate = (date, format = 'D MMM YYYY') =>
+  moment(date, 'ddd MMM DD YYYY HH:mm:ss').format(format);
 
 const usersQuery = gql`
   query Users {
@@ -36,20 +39,7 @@ const withQueries = graphql(usersQuery);
 type Props = {
   data: {
     loading: boolean,
-    users: [{
-      id: string,
-      username: string,
-      emails: [{
-        address: string,
-        verified: boolean,
-      }],
-      profile: {
-        firstName: string,
-        lastName: string,
-      },
-      createdAt: string,
-      updatedAt: string,
-    }],
+    users: [User],
   },
 };
 

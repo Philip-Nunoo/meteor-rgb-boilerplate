@@ -3,9 +3,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 
-import Users from './users/collection';
+import Users from '/imports/api/users/collection';
 
-import userResolvers from './users/graphql/resolvers';
+import userResolvers from '/imports/api/users/graphql/resolvers';
+
+import userMutations from '/imports/api/users/graphql/mutations';
 
 export default {
   Query: {
@@ -24,15 +26,7 @@ export default {
     },
   },
   Mutation: {
-    editUserDetails(root, args, context = {}) {
-      if (!context.userId) {
-        return { errors: [{ message: 'Must be logged in' }] };
-      }
-
-      Meteor.users.update(context.userId, { $set: args.input });
-
-      return { id: context.userId };
-    },
+    ...userMutations,
   },
   MutationResult: {
     errors(root) {
