@@ -1,5 +1,6 @@
 .sidebar {
   display: none;
+  color: #678098;
 }
 
 .main {
@@ -8,16 +9,17 @@
 
 @media (min-width: 768px) {
   .sidebar {
+    margin: 20px;
     position: fixed;
     top: 52px;
     bottom: 0;
     left: 0;
     z-index: 1000;
     display: block;
-    padding: 20px;
+    padding: 10px 20px;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
     border-right: 1px solid #eee;
   }
 
@@ -31,11 +33,38 @@
   margin-right: -21px;
   margin-bottom: 20px;
   margin-left: -20px;
+  color: #5C9ACF;
+
+  a {
+    margin-top: 1px;
+
+    &:hover {
+      color: #5b9bd1;
+      background-color: #F2F6F9 !important;
+    }
+  }
+
+  a > i {
+    margin-left: 1px;
+    margin-right: 4px;
+  }
 
   .active a,
   .active a:hover,
   .active > a:focus {
-    color: #fff;
-    background-color: #428bca;
+    color: #5b9bd1;
+    background-color: #F2F6F9;
+  }
+
+  li.heading {
+    height: 45px;
+    padding: 16px 17px 10px;
+
+    h3 {
+      font-size: 13px;
+      padding: 0;
+      margin: 0;
+      font-weight: 600;
+    }
   }
 }

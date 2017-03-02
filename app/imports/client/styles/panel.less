@@ -1,0 +1,33 @@
+.mrg-panel {
+  margin-top: 0;
+  margin-bottom: 25px;
+  padding: 0;
+  border-radius: 4px;
+
+  .mrg-panel-title {}
+  .mrg-panel-body {}
+
+  &.light {
+    padding: 12px 20px 15px;
+    background-color: #fff;
+
+    &.bordered .mrg-panel-title {
+      border-bottom: 1px solid #eef1f5;      
+    }
+  }
+
+  &.light.fit {
+    padding: 0;
+
+    &.bordered {
+      border: 1px solid #e7ecf1!important;
+    }
+
+    .mrg-panel-title {
+      padding: 15px 20px 10px;
+    }
+  }
+}
+
+.portlet.light.bordered>.portlet-title {
+}

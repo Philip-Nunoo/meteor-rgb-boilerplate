@@ -1,3 +1,22 @@
 @import './bootstrap-variables.less';
 @import '/imports/client/styles/navbar.less';
 @import '/imports/client/styles/sidenav';
+@import '/imports/client/styles/panel';
+
+// full height layout
+html,
+body,
+#app,
+#app > div,
+#app > div > div {
+  min-height: 100%;
+  height: 100%;
+}
+
+.uppercase {
+  text-transform: uppercase!important;
+}
+
+hr {
+  border-top: 1px solid #ddd;
+}

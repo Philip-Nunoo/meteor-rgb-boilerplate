@@ -33,6 +33,7 @@ import {
   AdminDashboard,
   AdminDashboardIndex,
   AdminDashboardUsers,
+  AdminDashbaordFontIcons,
 } from '/imports/ui/pages/admin';
 
 const requireAuth = (nextState, replaceState) => {
@@ -64,6 +65,7 @@ export default () =>
         <Route path="/admin" component={AdminDashboard}>
           <IndexRoute component={AdminDashboardIndex} />
           <Route path="/admin/users" component={AdminDashboardUsers} />
+          <Route path="/admin/icons" component={AdminDashbaordFontIcons} />
         </Route>
       </Route>
     </Route>

@@ -49,30 +49,36 @@ const DashboardUsers = ({ ...props }: Props) => {
 
   return (
     <div>
-      <Table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Email</th>
-            <th>Verified</th>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Created at</th>
-          </tr>
-        </thead>
-        <tbody>{!data.loading &&
-          users.map((user, index) =>
-            <tr key={index}>
-              <td />
-              <td>{user.emails[0].address}</td>
-              <td>{user.emails[0].verified ? 'true' : 'false'}</td>
-              <td>{user.username}</td>
-              <td>{user.profile && `${user.profile.firstName} ${user.profile.lastName}`}</td>
-              <td>{formatDate(user.createdAt)}</td>
-            </tr>
-        )}
-        </tbody>
-      </Table>
+      <hr />
+      <div className="mrg-panel light fit bordered">
+        <div className="mrg-panel-title">Users</div>
+        <div className="mrg-panel-body">
+          <Table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Verified</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Created at</th>
+              </tr>
+            </thead>
+            <tbody>{!data.loading &&
+              users.map((user, index) =>
+                <tr key={index}>
+                  <td />
+                  <td>{user.emails[0].address}</td>
+                  <td>{user.emails[0].verified ? 'true' : 'false'}</td>
+                  <td>{user.username}</td>
+                  <td>{user.profile && `${user.profile.firstName} ${user.profile.lastName}`}</td>
+                  <td>{formatDate(user.createdAt)}</td>
+                </tr>
+            )}
+            </tbody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 };

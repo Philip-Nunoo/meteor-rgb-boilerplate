@@ -15,6 +15,8 @@ import {
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
+import { DashboardStyle as styles } from './styles';
+import { SideNavs } from './config';
 
 type Props = {
   children?: React.Element<*>,
@@ -39,8 +41,8 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
-        <Navbar fluid>
+      <div style={styles.container}>
+        <Navbar fluid fixedTop className="navbar-admin">
           <Navbar.Header>
             <Navbar.Brand>
               <a href="/">
@@ -66,15 +68,30 @@ class Dashboard extends React.Component {
           <Row>
             <Col sm={3} md={2} className="sidebar">
               <Nav className="nav-sidebar">
-                <LinkContainer to="/admin" onlyActiveOnIndex>
-                  <MenuItem eventKey={1.1}>Dashboard</MenuItem>
-                </LinkContainer>
-                <LinkContainer to="/admin/users">
-                  <MenuItem eventKey={1.2}>Users</MenuItem>
-                </LinkContainer>
+                {SideNavs.map((item, index) => {
+                  const renderItem = !item.heading ?
+                    (<LinkContainer
+                      key={index}
+                      to={item.route}
+                      onlyActiveOnIndex={item.onlyActiveOnIndex}
+                    >
+                      <MenuItem eventKey={`1.${index}`}>
+                        <i className={item.icon} />
+                        <span className="title">{item.name}</span>
+                      </MenuItem>
+                    </LinkContainer>)
+                  :
+                    (<li className="heading">
+                      <h3 className="uppercase">{item.name}</h3>
+                    </li>)
+                  ;
+
+                  return renderItem;
+                }
+                )}
               </Nav>
             </Col>
-            <Col sm={9} smOffset={3} md={10} mdOffset={2} className="main">
+            <Col sm={9} smOffset={3} md={10} mdOffset={2} className="main" style={{ paddingTop: 72 }}>
               {this.props.children}
             </Col>
           </Row>
