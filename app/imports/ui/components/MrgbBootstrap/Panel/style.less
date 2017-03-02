@@ -5,14 +5,25 @@
   border-radius: 4px;
 
   .mrg-panel-title {}
-  .mrg-panel-body {}
+  .mrg-panel-body {
+    clear: both;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    -ms-border-radius: 0 0 4px 4px;
+    -o-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+  }
 
   &.light {
     padding: 12px 20px 15px;
     background-color: #fff;
 
     &.bordered .mrg-panel-title {
-      border-bottom: 1px solid #eef1f5;      
+      border-bottom: 1px solid #eef1f5;
+    }
+
+    .mrg-panel-body {
+      padding-top: 8px;
     }
   }
 
@@ -23,11 +34,12 @@
       border: 1px solid #e7ecf1!important;
     }
 
+    .mrg-panel-body {
+      padding: 10px 20px 20px;
+    }
+
     .mrg-panel-title {
       padding: 15px 20px 10px;
     }
   }
-}
-
-.portlet.light.bordered>.portlet-title {
 }

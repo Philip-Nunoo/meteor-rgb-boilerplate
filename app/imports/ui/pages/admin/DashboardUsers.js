@@ -3,11 +3,15 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import selectn from 'selectn';
-import { graphql } from 'react-apollo';
-import {
-  Table,
-} from 'react-bootstrap';
 import moment from 'moment';
+import { graphql } from 'react-apollo';
+import { Table } from 'react-bootstrap';
+
+import {
+  Panel,
+  PanelTitle,
+  PanelBody,
+} from '/imports/ui/components/MrgbBootstrap';
 
 import type { User } from '/imports/api/flow-types';
 
@@ -50,9 +54,9 @@ const DashboardUsers = ({ ...props }: Props) => {
   return (
     <div>
       <hr />
-      <div className="mrg-panel light fit bordered">
-        <div className="mrg-panel-title">Users</div>
-        <div className="mrg-panel-body">
+      <Panel light="light" fit>
+        <PanelTitle>Users</PanelTitle>
+        <PanelBody>
           <Table>
             <thead>
               <tr>
@@ -77,8 +81,8 @@ const DashboardUsers = ({ ...props }: Props) => {
             )}
             </tbody>
           </Table>
-        </div>
-      </div>
+        </PanelBody>
+      </Panel>
     </div>
   );
 };

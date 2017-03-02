@@ -19,12 +19,20 @@ export default [
   },
   {
     icon: 'icon-folder',
-    name: 'Font Icons',
+    name: 'Font Icons (feature > UI)',
     route: '/admin/icons',
     onlyActiveOnIndex: false,
   },
   {
-    heading: true,
-    name: '------------',
+    icon: 'icon-settings',
+    name: 'Forms (feature > Form)',
+    route: '/admin/forms',
+    onlyActiveOnIndex: false,
+  },
+  {
+    icon: 'icon-wallet',
+    name: 'MrgbPanels (feature > panels)',
+    route: '/admin/panels',
+    onlyActiveOnIndex: false,
   },
 ];

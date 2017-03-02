@@ -3,11 +3,13 @@
 import AdminDashboard from './Dashboard';
 import AdminDashboardIndex from './DashboardIndex';
 import AdminDashboardUsers from './DashboardUsers';
-import AdminDashbaordFontIcons from './DashboardFontIcons';
+import AdminDashboardFontIcons from './DashboardFontIcons';
+import AdminDashboardForms from './DashboardForms';
 
 export {
   AdminDashboard,
   AdminDashboardIndex,
   AdminDashboardUsers,
-  AdminDashbaordFontIcons,
+  AdminDashboardFontIcons,
+  AdminDashboardForms,
 };
