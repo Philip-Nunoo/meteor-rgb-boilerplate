@@ -1,0 +1,35 @@
+.mrg-page-header {
+  .mrg-page-header-title {
+    display: inline-block;
+    float: left;
+    padding: 5px 0 10px;
+
+    h1 {
+      color: #697882;
+      font-size: 22px;
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+
+      small {
+        color: #9eacb4;
+        font-size: 13px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .mrg-page-header-toolbar {
+    display: inline-block;
+    float: right;
+  }
+
+  &::after {
+    clear: both;
+  }
+
+  &::before, &::after {
+    content: " ";
+    display: table;
+  }
+}

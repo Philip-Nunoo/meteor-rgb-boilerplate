@@ -12,7 +12,7 @@ type TableProps = {
   responsive?: boolean,
 };
 
-export const Table = ({
+export default ({
   children,
   striped,
   bordered,

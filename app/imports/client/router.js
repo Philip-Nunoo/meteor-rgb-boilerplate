@@ -12,6 +12,7 @@ import {
 
 import App from '/imports/ui/pages/App';
 import AppDashboard from '/imports/ui/pages/AppDashboard';
+import Page404 from '/imports/ui/pages/404';
 
 import {
   LandingPage,
@@ -76,4 +77,5 @@ export default () =>
         </Route>
       </Route>
     </Route>
+    <Route path="*" component={Page404} />
   </Router>;
