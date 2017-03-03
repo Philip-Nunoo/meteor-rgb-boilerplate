@@ -38,6 +38,7 @@ import {
 } from '/imports/ui/pages/admin';
 
 import AdminPanelExample from '/imports/ui/components/MrgbBootstrap/Panel';
+import AdminTableExample from '/imports/ui/components/MrgbBootstrap/Table';
 
 const requireAuth = (nextState, replaceState) => {
   Tracker.autorun(() => {
@@ -71,6 +72,7 @@ export default () =>
           <Route path="/admin/icons" component={AdminDashboardFontIcons} />
           <Route path="/admin/forms" component={AdminDashboardForms} />
           <Route path="/admin/panels" component={AdminPanelExample} />
+          <Route path="/admin/tables" component={AdminTableExample} />
         </Route>
       </Route>
     </Route>

@@ -35,4 +35,10 @@ export default [
     route: '/admin/panels',
     onlyActiveOnIndex: false,
   },
+  {
+    icon: 'icon-briefcase',
+    name: 'Tables (feature > tables)',
+    route: '/admin/tables',
+    onlyActiveOnIndex: false,
+  },
 ];
