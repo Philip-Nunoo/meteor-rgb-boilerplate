@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import { Table } from './components';
+import Table from './components';
 import { Panel, PanelTitle } from '../Panel';
 
 const Users = [
@@ -106,7 +106,7 @@ export default () =>
             </thead>
             <tbody>
               {Users.map((user =>
-                <tr>
+                <tr key={user._id}>
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.gender}</td>
@@ -131,7 +131,7 @@ export default () =>
             </thead>
             <tbody>
               {Users.map((user =>
-                <tr>
+                <tr key={user._id}>
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.gender}</td>
@@ -158,7 +158,7 @@ export default () =>
             </thead>
             <tbody>
               {Users.map((user =>
-                <tr>
+                <tr key={user._id}>
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.gender}</td>
@@ -183,7 +183,7 @@ export default () =>
             </thead>
             <tbody>
               {Users.map((user =>
-                <tr>
+                <tr key={user._id}>
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.gender}</td>
@@ -210,7 +210,7 @@ export default () =>
             </thead>
             <tbody>
               {Users.map((user =>
-                <tr>
+                <tr key={user._id}>
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.gender}</td>

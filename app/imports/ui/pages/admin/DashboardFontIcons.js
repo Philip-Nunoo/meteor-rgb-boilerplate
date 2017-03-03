@@ -6,6 +6,11 @@ import {
   Col,
   Row,
 } from 'react-bootstrap';
+
+import {
+  PageHeader,
+  PageTitle,
+} from '/imports/ui/components/MrgbBootstrap';
 import { Icons } from './config';
 
 type Props = {
@@ -74,7 +79,14 @@ class IconPreview extends React.Component {
 
 const DashboardFontIcons = () =>
   <div>
-    Simple Line Icons <hr />
+    <PageHeader>
+      <PageTitle>
+        <h1>
+          Font Icons
+          <small>simple line icons</small>
+        </h1>
+      </PageTitle>
+    </PageHeader>
     <Row>
       {Icons.map((icon, index) =>
         <IconPreview key={index} icon={icon} />

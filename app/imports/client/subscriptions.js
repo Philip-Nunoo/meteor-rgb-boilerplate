@@ -1,6 +1,6 @@
 /* @flow */
 
-import { print } from 'graphql-tag/printer';
+import { print } from 'graphql-tag/bundledPrinter';
 
 const addGraphQLSubscriptions = (networkInterface: any, wsClient: any) =>
   Object.assign(networkInterface, {

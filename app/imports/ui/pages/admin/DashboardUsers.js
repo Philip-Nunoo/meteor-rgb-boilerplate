@@ -5,12 +5,17 @@ import gql from 'graphql-tag';
 import selectn from 'selectn';
 import moment from 'moment';
 import { graphql } from 'react-apollo';
-import { Table } from 'react-bootstrap';
+import {
+  Label,
+} from 'react-bootstrap';
 
 import {
+  Table,
   Panel,
   PanelTitle,
   PanelBody,
+  PageHeader,
+  PageTitle,
 } from '/imports/ui/components/MrgbBootstrap';
 
 import type { User } from '/imports/api/flow-types';
@@ -53,7 +58,13 @@ const DashboardUsers = ({ ...props }: Props) => {
 
   return (
     <div>
-      <hr />
+      <PageHeader>
+        <PageTitle>
+          <h1>
+            All Users
+          </h1>
+        </PageTitle>
+      </PageHeader>
       <Panel light="light" fit>
         <PanelTitle>Users</PanelTitle>
         <PanelBody>
@@ -71,9 +82,13 @@ const DashboardUsers = ({ ...props }: Props) => {
             <tbody>{!data.loading &&
               users.map((user, index) =>
                 <tr key={index}>
-                  <td />
+                  <td>{index + 1}</td>
                   <td>{user.emails[0].address}</td>
-                  <td>{user.emails[0].verified ? 'true' : 'false'}</td>
+                  <td>
+                    <Label bsStyle={user.emails[0].verified ? 'success' : 'warning'}>
+                      {user.emails[0].verified ? 'verified' : 'false'}
+                    </Label>
+                  </td>
                   <td>{user.username}</td>
                   <td>{user.profile && `${user.profile.firstName} ${user.profile.lastName}`}</td>
                   <td>{formatDate(user.createdAt)}</td>
